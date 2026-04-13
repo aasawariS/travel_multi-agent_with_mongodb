@@ -1,0 +1,41 @@
+spring:
+  application:
+    name: travel-ai
+  autoconfigure:
+    exclude:
+      - org.springframework.ai.model.mistralai.autoconfigure.MistralAiOcrAutoConfiguration
+  ai:
+    model:
+      chat: ${SPRING_AI_MODEL_CHAT:none}
+      embedding: ${SPRING_AI_MODEL_EMBEDDING:none}
+      moderation: ${SPRING_AI_MODEL_MODERATION:none}
+      ocr: ${SPRING_AI_MODEL_OCR:none}
+
+server:
+  port: 8080
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
+
+travel:
+  mongodb:
+    uri: "mongodb+srv://<user_name>:<password>@appname.xcwp7v6.mongodb.net/ops_agent?retryWrites=true&w=majority&appName=appName"
+  demo:
+    enabled: ${TRAVEL_DEMO_ENABLED:false}
+  budget:
+    soft-cap: ${TRAVEL_BUDGET_SOFT_CAP:950}
+
+voyage:
+  api:
+    base-url: ${VOYAGE_API_BASE_URL:https://api.voyageai.com}
+    key: ${VOYAGE_API_KEY:}
+    model: ${VOYAGE_MODEL:voyage-3-large}
+    dimensions: ${VOYAGE_DIMENSIONS:1024}
+
+mongodb:
+  vector-search:
+    index-name: ${MONGODB_VECTOR_INDEX:incident_memory_vector_index}
+    auto-create-index: ${MONGODB_AUTO_CREATE_VECTOR_INDEX:false}
