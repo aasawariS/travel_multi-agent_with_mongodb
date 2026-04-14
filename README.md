@@ -187,7 +187,7 @@ curl -X POST http://localhost:8080/plan/replan \
 
 ## 🔍 What Happened Internally?
 
-### 🧠 Step 1: Memory Agent (Vector Search)
+###  Step 1: Memory Agent (Vector Search)
 
 The system asks:
 
